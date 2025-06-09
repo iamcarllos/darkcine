@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DarkCine</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+    <a href="index.html" class="logo">🎬 DarkCine</a>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="filmes.html">Filmes</a></li>
+        <li><a href="#">Séries</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <ul>
+      <li class="categoria">Filmes
+        <ul class="submenu">
+          <li><a href="#">Lançamentos</a></li>
+          <li><a href="#">Dublado</a></li>
+          <li><a href="#">Legendado</a></li>
+          <li><a href="#">Nacional</a></li>
+          <li><a href="#">Filmes de 2024</a></li>
+          <li><a href="#">Filmes de 2023</a></li>
+        </ul>
+      </li>
+      <li class="categoria">Séries
+        <ul class="submenu">
+          <li><a href="#">Lançamentos</a></li>
+          <li><a href="#">Dublado</a></li>
+          <li><a href="#">Legendado</a></li>
+          <li><a href="#">Séries de 2024</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Bem-vindo ao DarkCine</h1>
+        <p>Assista aos melhores filmes e séries em um ambiente escuro e imersivo.</p>
+      </div>
+    </section>
+
+    
+
+    <section class="categoria">
+      <h2>🔥 Lançamentos</h2>
+      <div class="filmes" id="lancamentos-limitados"></div>
+      <div style="text-align:center; margin-top: 15px;">
+        <a href="filmes.html" class="btn-ver-mais">Ver mais</a>
+      </div>
+    </section>
+
+    <section class="novos-lancamentos">
+      <h2>📽️ <span style="color: red;">Em Alta no DarkCine</span></h2>
+      <div class="grid-filmes" id="filmes-em-alta"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DarkCine - Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('active');
+    }
+
+    fetch('filmes.json')
+      .then(response => response.json())
+      .then(data => {
+        const lancamentosContainer = document.getElementById('lancamentos-limitados');
+        const emAltaContainer = document.getElementById('filmes-em-alta');
+
+        data.lancamentos.slice(0, 5).forEach(filme => {
+          const card = document.createElement('a');
+          card.href = filme.link;
+          card.className = 'card';
+          card.innerHTML = `
+            ${filme.novo ? '<span class="novo-badge">NOVO</span>' : ''}
+            <img src="${filme.src}" alt="${filme.titulo}">
+            <p>${filme.titulo}</p>
+          `;
+          lancamentosContainer.appendChild(card);
+        });
+
+        data.emAlta.forEach(filme => {
+          const box = document.createElement('a');
+          box.href = filme.link;
+          box.className = 'filme-box';
+          box.innerHTML = `
+            <img src="${filme.src}" alt="${filme.titulo}" />
+            <div class="info-filme">
+              <p class="titulo">${filme.titulo}</p>
+              <p class="sub">${filme.sub}</p>
+            </div>
+          `;
+          emAltaContainer.appendChild(box);
+        });
+      });
+  </script>
+</body>
+</html>
+
+
