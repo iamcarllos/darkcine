@@ -1,10 +1,18 @@
 {
   "lancamentos": [
-    {
-      "titulo": "Rua do medo 2025 4K ",
-      "src": "ruad.png",
-      "link": "player.html?link=https://mxdrop.to/e/36pvwvxoh36zov"
-    }
+{
+  "titulo": "Rua do medo 2025 2K",
+  "src": "ruad.png",
+  "link": "player.html?link=https://mxdrop.to/e/k0pq446zagvj3l",
+  "novo": true
+}
+
   ],
-  "emAlta": []
+  "emAlta": [
+    {
+      "titulo": "FILME 02",
+      "src": "ruad.png",
+      "link": "player.html?link=LINK"
+    }
+  ]
 }
