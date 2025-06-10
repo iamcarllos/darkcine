@@ -1,18 +1,24 @@
 {
   "lancamentos": [
 {
-  "titulo": "Rua do medo 2025 2K",
+  "titulo": "Rua do medo 2025",
   "src": "ruad.png",
-  "link": "player.html?link=https://mxdrop.to/e/k0pq446zagvj3l",
+  "link": "player.html?link=https://mxdrop.to/e/nlp7xmqoull76vm",
+  "novo": true
+}
+ {
+  "titulo": "Until Dawn 2025",
+  "src": "until.png",
+  "link": "player.html?link=https://mxdrop.to/e/owpk9n1nslkk1vv",
   "novo": true
 }
 
   ],
   "emAlta": [
     {
-      "titulo": "FILME 02",
+      "titulo": "Until Dawn 2025",
       "src": "kk.png",
-      "link": "player.html?link=LINK"
+      "link": "player.html?link=https://mxdrop.to/e/owpk9n1nslkk1vv"
     }
   ]
 }
