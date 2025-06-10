@@ -1,3 +1,7 @@
+
+  // ... seu código de fetch() continua aqui
+
+
 const alphabetCarousel = document.getElementById('alphabetCarousel');
 const moviesGrid = document.getElementById('movies-grid');
 const letters = Array.from(Array(26)).map((_, i) => String.fromCharCode(65 + i));
@@ -50,12 +54,14 @@ function renderMoviesByLetter(letter) {
     card.target = "_blank";
     card.className = 'movie-card';
 
-    card.innerHTML = `
-      <img src="${movie.src}" alt="${movie.titulo}" loading="lazy" />
-      <div class="movie-info">
-        <h3 class="movie-title">${movie.titulo}</h3>
-      </div>
-    `;
+card.innerHTML = `
+  ${movie.novo ? '<span class="novidade-badge">NOViDADE</span>' : ''}
+  <img src="${movie.src}" alt="${movie.titulo}" loading="lazy" />
+  <div class="movie-info">
+    <h3 class="movie-title">${movie.titulo}</h3>
+  </div>
+`;
+
 
     moviesGrid.appendChild(card);
   });
@@ -94,13 +100,17 @@ body.addEventListener('click', (e) => {
   }
 });
 
-// Toggle submenu categorias
-document.querySelectorAll('.categoria').forEach(categoria => {
-  categoria.addEventListener('click', () => {
+// Submenu toggle correto
+document.querySelectorAll('.categoria > span').forEach(span => {
+  span.addEventListener('click', (e) => {
+    e.stopPropagation(); // evita fechar o sidebar acidentalmente
+    const categoria = span.parentElement;
     categoria.classList.toggle('expanded');
-    const submenu = categoria.nextElementSibling;
+    const submenu = categoria.querySelector('.submenu');
     if (submenu) {
       submenu.classList.toggle('expanded');
     }
   });
 });
+
+
